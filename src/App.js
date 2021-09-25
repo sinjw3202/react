@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import ScrollBox from './ScrollBox';
+// import ValidationSample from './ValidationSample';
+// import EventPractive4 from './EventPractive4';
+// import EventPractive2 from './EventPractive2';
+// import EventPractive from './EventPractive';
+// import Say from './Say';
+// import Counter from './Counter';
+// import MyComponent from './MyComponent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  render() {
+    // const name = 'react';
+    // const favoriteNumber = 20;
+    return (
+      <div>
+        <ScrollBox
+          ref={(ref) => {
+            this.ScrollBox = ref;
+          }}
+        />
+        <button
+          onClick={() => {
+            this.ScrollBox.scrollToBottom();
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          맨 밑으로
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
