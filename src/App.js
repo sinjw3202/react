@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
-import ScrollBox from './ScrollBox';
-// import ValidationSample from './ValidationSample';
-// import EventPractive4 from './EventPractive4';
-// import EventPractive2 from './EventPractive2';
-// import EventPractive from './EventPractive';
-// import Say from './Say';
-// import Counter from './Counter';
-// import MyComponent from './MyComponent';
+import LifeCycleSample from './LifeCycleSample';
+// import IterationSample from './IterationSample';
 
+function getRandomColor() {
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
 class App extends Component {
+  state = {
+    color: '#000000',
+  };
+
+  handleClick = () => {
+    this.setState({
+      color: getRandomColor(),
+    });
+  };
+
   render() {
-    // const name = 'react';
-    // const favoriteNumber = 20;
     return (
       <div>
-        <ScrollBox
-          ref={(ref) => {
-            this.ScrollBox = ref;
-          }}
-        />
-        <button
-          onClick={() => {
-            this.ScrollBox.scrollToBottom();
-          }}
-        >
-          맨 밑으로
-        </button>
+        <button onClick={this.handleClick}>랜덤 색상</button>
+        <LifeCycleSample color={this.state.color} />
       </div>
     );
   }
