@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import MyComponent from './MyComponent';
+import EventPractive from './EventPractive';
 
 class App extends Component {
   render() {
-    return (
-      <MyComponent name="신재우" favoriteNumber={3}>
-        리액트
-      </MyComponent>
-    );
+    return <EventPractive />;
   }
 }
 
