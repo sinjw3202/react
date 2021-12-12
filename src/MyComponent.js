@@ -1,47 +1,36 @@
-// import React from 'react';
-import PropTypes from 'prop-types';
-
-// // 비구조화 할당으로 값을 받아와버리면 코드양도 줄어들고 편하다
-// // 함수형
-// const MyComponent = ({ name, favoriteNumber, children }) => {
-//   return (
-//     <div>
-//       안녕하세요 부모로부터 전달받았어요 props는 : {name}
-//       <br />
-//       사이를 비집고 들어와 버린 : {children}
-//       <br />
-//       내가 제일 좋아하는 숫자는 뭘까요? : {favoriteNumber}
-//     </div>
-//   );
-// };
-
-// MyComponent.defaultProps = {
-//   name: '기본값입니다.',
-// };
-
-// MyComponent.propTypes = {
-//   name: PropTypes.string,
-//   favoriteNumber: PropTypes.number.isRequired,
-// };
+/**
+ * props는 properties를 줄인말이며,(읽기전용)
+ * 부모객체의 값을 자식객체에서 사용할수 있다.
+ * props.객체를 통해서 값을 가져옴 / 객체는 태그의 properties를 통해서 가져옴
+ *
+ * children은 태그 사이의 값을 가져올때 사용됨
+ *
+ * propTypes는 형태를 미리 정의해준다.
+ * 미리 정의를 해도 출력이 안되는건 아니지만 console을 통해서 해당 내용을 알려준다.
+ * 하지만 isRequired를 통해서 해당되는 타입이 아니면 출력을 안할 수 있다.
+ *
+ */
 
 import React, { Component } from 'react';
+import Proptypes from 'prop-types';
 
 class MyComponent extends Component {
   static defaultProps = {
-    name: '기본',
+    name: '기본이름',
   };
+
   static propTypes = {
-    name: PropTypes.string,
-    favoriteNumber: PropTypes.number.isRequired,
+    name: Proptypes.string,
+    favoriteNumber: Proptypes.number.isRequired,
   };
 
   render() {
-    const { name, favoriteNumber, childeren } = this.props;
+    const { name, favoriteNumber, children } = this.props;
     return (
       <div>
-        안녕하세요, 케케케 : {name} <br />
-        childeren : {childeren} <br />
-        favoriteNumber : {favoriteNumber}
+        안녕하세요, 제 이름은 {name}입니다. <br />
+        children 값은 {children}입니다. <br />
+        제가 좋아하는 숫자는 {favoriteNumber}입니다.
       </div>
     );
   }
