@@ -9,56 +9,61 @@
  * 문자열로 처리하네 [e.target.name]
  *
  * state에 사용될 값들을 초기화
+ *
+ * 만약 비슷한 사용자 정의 함수가 많다면 어떻게 해야됨?
+ * 일괄적으로 처리할 변수를 담고, 그 변수를 또 따로 담아야됨 그런뒤 ...form으로 모든 값을 가져와서 처리함
  */
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class EventPractive extends Component {
-  state = {
+const EventPractive = () => {
+  const [form, setForm] = useState({
     username: '',
     message: '',
+  });
+  const { username, message } = form;
+  const onChange = (e) => {
+    const nextForm = {
+      ...form, // 기존의 form 내용을 이 자리에 복사한 뒤
+      [e.target.name]: e.target.value, // 원하는 값을 덮어 씌우기
+    };
+    console.log(nextForm); //사용되는 객체가 담김
+    setForm(nextForm);
   };
-
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-  handleClick = () => {
-    alert(this.state.message);
-    this.setState({
+  // const onChangeUserName = (e) => setUsername(e.target.value);
+  // const onChangeMessage = (e) => setMessage(e.target.value);
+  const onClick = () => {
+    alert(username + ': ' + message);
+    setForm({
       username: '',
       message: '',
     });
   };
-  handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      this.handleClick();
+  const onKeyPress = (e) => {
+    if ((e.key = 'Enter')) {
+      onClick();
     }
   };
-
-  render() {
-    return (
-      <div>
-        <h1>이벤트 연습</h1>
-        <input
-          type="text"
-          name="username"
-          placeholder="사용자명"
-          value={this.state.username}
-          onChange={this.handleChange}
-        ></input>
-        <input
-          type="text"
-          name="message"
-          placeholder="아무거나 입력해 보세요."
-          value={this.state.message}
-          onChange={this.handleChange}
-          onKeyPress={this.handleKeyPress}
-        ></input>
-        <button onClick={this.handleClick}>확인</button>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>이벤트 연습</h1>
+      <input
+        type="text"
+        name="username"
+        placeholder="사용자명"
+        value={username}
+        onChange={onChange}
+      ></input>
+      <input
+        type="text"
+        name="message"
+        placeholder="아무거나 입력해주세요"
+        value={message}
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+      ></input>
+      <button onClick={onClick}>확인</button>
+    </div>
+  );
+};
 
 export default EventPractive;
