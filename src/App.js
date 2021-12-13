@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import EventPractive from './EventPractive';
+import ValidationSample from './ValidationSample';
 
 class App extends Component {
   render() {
-    return <EventPractive />;
+    return <ValidationSample />;
   }
 }
 
