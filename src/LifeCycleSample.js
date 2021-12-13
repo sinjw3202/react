@@ -27,6 +27,7 @@ class LifeCycleSample extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log('shouldComponentUpdate', nextProps, nextState);
+    // 숫자의 마지막 자리가 4면 리랜더링하지 않습니다.
     return nextState.number % 10 !== 4;
   }
 
@@ -63,7 +64,6 @@ class LifeCycleSample extends Component {
     };
     return (
       <div>
-        {this.props.missing.value}
         <h1 style={style} ref={(ref) => (this.myRef = ref)}>
           {this.state.number}
         </h1>
