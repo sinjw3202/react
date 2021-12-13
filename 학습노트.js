@@ -30,7 +30,7 @@
  * 컴포넌트 만들기 -> contructor -> getDerivedStateFromProps -> render -> componentDidMount
  * constructor : 생성자 / 컴포넌트를 만들때마다 호출되는 클래스 생성자 메서드
  * getDerivedStateFromProps : props에 있는 값을 state에 넣을 때 사용됨
- * render : UI를 렌더링하느 ㄴ메서드
+ * render : UI를 렌더링하는 메서드
  * componentDidMount : 컴포넌트가 웹 브라우저상에 나타난 후 호출하는 메서드
  *
  * 업데이트
