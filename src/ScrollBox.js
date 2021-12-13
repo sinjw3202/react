@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
 class ScrollBox extends Component {
+  // box = React.createRef();
   scrollToBottom = () => {
+    // const { scrollHeight, clientHeight } = this.box.current;
+    // this.box.current.scrollTop = scrollHeight - clientHeight;
     const { scrollHeight, clientHeight } = this.box;
     this.box.scrollTop = scrollHeight - clientHeight;
   };
